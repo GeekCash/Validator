@@ -1,6 +1,7 @@
 # How to run a Validator on GeekCash
 Bash installer for GeekCash Validator on Ubuntu 18.04 LTS x64 and Ubuntu 20.04 LTS x64
 
+Running a validator on a live network is a lot of responsibility! You will be accountable for not only your own stake, but also the stake of your current nominators. If you make a mistake and get slashed, your money and your reputation will be at risk. However, running a validator can also be very rewarding, knowing that you contribute to the security of a decentralized network while growing your stash.
 
 ### Standard requirements
 OS: Ubuntu 18.04
@@ -54,7 +55,11 @@ Once your node is fully synced, stop the process by pressing Ctrl-C. At your ter
 ```
 curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "author_rotateKeys", "params":[]}' http://localhost:9933
 ```
+
+![How to run a Validator on GeekCash](./03.png "How to run a Validator on GeekCash")
+
 The output will have a hex-encoded "result" field. The result is the concatenation of the four public keys. Save this result for a later step.
+
 
 ### Submitting the setKeys Transaction
 

@@ -5,6 +5,10 @@
 
 sudo apt-get install curl ntp -y;
 
+# stop if 
+
+sudo service geek stop
+
 # Download geekcash and put executable to /usr/local/bin
 
 echo "GeekCash downloading..."
@@ -19,7 +23,7 @@ sudo cp ./geek /usr/bin/
 rm -rf ./geek
 
 
-echo "Setup automatically restart on server reboots or crashes."
+echo "Setup run on startup..."
 
 # You can run your validator as a systemd process so that it will automatically restart on server reboots or crashes 
 echo "
@@ -45,8 +49,11 @@ sudo systemctl enable geek.service
 # Start it manually with:
 sudo systemctl start geek.service
 
-echo "GeekCash install and starting..."
+echo "GeekCash install and starting... Done!"
 
 echo "You can tail the logs with journalctl like so: journalctl -f -u geek"
+
+# remove install
+rm -rf ./install.sh
 
 sleep 3
