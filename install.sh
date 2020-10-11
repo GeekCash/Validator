@@ -3,7 +3,7 @@
 # Installs masternode on Ubuntu 16.04 x64 & Ubuntu 18.04
 # ATTENTION: The anti-ddos part will disable http, https and dns ports.
 
-sudo apt-get install curl ntp -y;
+sudo apt-get install curl ntp ufw -y;
 
 # stop if 
 
@@ -48,6 +48,13 @@ sudo systemctl enable geek.service
 
 # Start it manually with:
 sudo systemctl start geek.service
+
+# Firewall security measures
+
+sudo ufw allow 30333
+sudo ufw allow ssh
+sudo ufw default allow outgoing
+sudo ufw --force enable
 
 echo "GeekCash install and starting... Done!"
 
