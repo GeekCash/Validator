@@ -31,7 +31,7 @@ echo "
 Description=GeekCash Validator
 
 [Service]
-ExecStart=/usr/bin/geek --validator --chain testnet --base-path $HOME/.geek --bootnodes /ip4/207.180.235.188/tcp/30333/p2p/12D3KooWJdQ3Vm8Wiz7waC3mfqBwd4WB7SDJfYf6LawTKuQ8HdW3
+ExecStart=/usr/bin/geek --validator --chain testnet --base-path $HOME/.geek --bootnodes /ip4/207.180.235.188/tcp/30333/p2p/12D3KooWNReUVTrbbMxMnnEimotpKVms94r2y7GVzSySRp2ZNLra --bootnodes /ip4/149.28.62.135/tcp/30333/p2p/12D3KooWEdkrr85Tk7vYPM6xMo37CcRyqbSNeJsPjkdTvk1MtTsY --bootnodes /ip4/68.183.138.100/tcp/30333/p2p/12D3KooWJDvU626kQ1sUMqaso89mpZjpaKGA8F5eALKxiJayHuUN
 Restart=always
 RestartSec=120
 
