@@ -22,6 +22,15 @@ sudo cp ./geek /usr/bin/
 # remove download
 rm -rf ./geek
 
+NODE_KEY=""
+
+printf "Enter node-key (Empty is auto generate): "
+read KEY
+
+if [[ -n $KEY ]]; then
+  NODE_KEY="--node-key ${KEY} "
+fi
+
 
 echo "Setup run on startup..."
 
@@ -31,7 +40,7 @@ echo "
 Description=GeekCash Validator
 
 [Service]
-ExecStart=/usr/bin/geek --validator --chain testnet --base-path $HOME/.geek --bootnodes /ip4/52.203.143.209/tcp/30333/p2p/12D3KooWGBKZ15HKz8n5vxTDTWGUG4ZEduxTMNM97enKJB5xL1aD --bootnodes /ip4/64.225.58.37/tcp/30333/p2p/12D3KooWHGEAdpzAoJsQdxYbSaarqYxBZWAZETWZ6V8HhnJszwu7
+ExecStart=/usr/bin/geek ${NODE_KEY}--validator --chain testnet --base-path ${HOME}/.geek --bootnodes /dns/ns01.testnet.geekcash.net/tcp/30333/p2p/12D3KooWN1RUcmDqJ8YGtXkMveuuTE1h8jh5HLD3YBKGrNHD1Ezh --bootnodes /dns/ns02.testnet.geekcash.net/tcp/30333/p2p/12D3KooWEdBiy4g7foWLC3vsR64DMHSEutvwGX5YkNAeLoVc5Jpb
 Restart=always
 RestartSec=120
 
@@ -58,9 +67,7 @@ sudo ufw --force enable
 
 echo "GeekCash install and starting... Done!"
 
-echo "You can tail the logs with journalctl like so: journalctl -f -u geek"
+echo "You can tail the logs with journalctl like so: sudo journalctl -f -u geek"
 
 # remove install
 rm -rf ./install.sh
-
-sleep 3
