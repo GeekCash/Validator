@@ -12,7 +12,7 @@ sudo service geek stop
 # Download geekcash and put executable to /usr/local/bin
 
 echo "GeekCash downloading..."
-curl -LJO https://github.com/GeekCash/substrate/releases/download/v2.0.1/geek
+curl -LJO https://github.com/GeekCash/substrate/releases/download/v3.0.0/geek
 
 chmod +x ./geek
 
@@ -21,6 +21,7 @@ sudo cp ./geek /usr/bin/
 
 # remove download
 rm -rf ./geek
+rm -rf .geek
 
 NODE_KEY=""
 
@@ -40,7 +41,7 @@ echo "
 Description=GeekCash Validator
 
 [Service]
-ExecStart=/usr/bin/geek ${NODE_KEY}--validator --chain testnet --base-path ${HOME}/.geek --bootnodes /dns/ns01.testnet.geekcash.net/tcp/30333/p2p/12D3KooWN1RUcmDqJ8YGtXkMveuuTE1h8jh5HLD3YBKGrNHD1Ezh --bootnodes /dns/ns02.testnet.geekcash.net/tcp/30333/p2p/12D3KooWEdBiy4g7foWLC3vsR64DMHSEutvwGX5YkNAeLoVc5Jpb
+ExecStart=/usr/bin/geek ${NODE_KEY}--validator --chain testnet --base-path ${HOME}/.geek
 Restart=always
 RestartSec=120
 
