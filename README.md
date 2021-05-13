@@ -21,7 +21,7 @@ sudo bash ./install.sh
 
 You can tail the logs with `journalctl` like so:
 ```
-journalctl -f -u geek
+sudo journalctl -f -u geek
 ```
 
 ### Setup validator

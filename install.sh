@@ -24,6 +24,8 @@ rm -rf ./geek
 rm -rf .geek
 
 NODE_KEY=""
+NODE_NAME=""
+RPC_CORS=""
 
 printf "Enter node-key (Empty is auto generate): "
 read KEY
@@ -32,16 +34,29 @@ if [[ -n $KEY ]]; then
   NODE_KEY="--node-key ${KEY} "
 fi
 
+printf "Enter Your Node Name: "
+read NAME
+
+if [[ -n $NAME ]]; then
+  NODE_NAME="--name ${NAME} "
+fi
+
+printf "Allow RPC Cors?(y/n):"
+read REPLY
+
+if [ "$REPLY" = "y" ] || [ "$REPLY" = "Y" ]; then
+  RPC_CORS="--rpc-cors all "
+fi
 
 echo "Setup run on startup..."
 
 # You can run your validator as a systemd process so that it will automatically restart on server reboots or crashes 
 echo "
 [Unit]
-Description=GeekCash Validator
+Description=Geek Validator
 
 [Service]
-ExecStart=/usr/bin/geek ${NODE_KEY}--validator --chain testnet --base-path ${HOME}/.geek
+ExecStart=/usr/bin/geek ${NODE_KEY}${RPC_CORS}${NODE_NAME}--validator --chain testnet --base-path ${HOME}/.geek
 Restart=always
 RestartSec=120
 
@@ -51,7 +66,7 @@ WantedBy=multi-user.target
 
 sudo systemctl daemon-reload
 
-sleep 5
+sleep 3
 
 # To enable this to autostart on bootup run:
 sudo systemctl enable geek.service
