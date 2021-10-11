@@ -1,7 +1,5 @@
 #!/bin/bash
 # install.sh
-# Installs masternode on Ubuntu 16.04 x64 & Ubuntu 18.04
-# ATTENTION: The anti-ddos part will disable http, https and dns ports.
 
 sudo apt-get install curl ntp ufw -y;
 
@@ -12,7 +10,7 @@ sudo service geek stop
 # Download geekcash and put executable to /usr/local/bin
 
 echo "GeekCash downloading..."
-curl -LJO https://github.com/GeekCash/substrate/releases/download/v3.0.0/geek
+curl -LJO https://github.com/GeekCash/substrate/releases/download/monthly-2021-08/geek
 
 chmod +x ./geek
 
@@ -56,7 +54,7 @@ echo "
 Description=Geek Validator
 
 [Service]
-ExecStart=/usr/bin/geek ${NODE_KEY}${RPC_CORS}${NODE_NAME}--validator --chain testnet --base-path ${HOME}/.geek
+ExecStart=/usr/bin/geek ${NODE_KEY}${RPC_CORS}${NODE_NAME}--validator --chain testnet --pruning=archive --base-path ${HOME}/.geek
 Restart=always
 RestartSec=120
 
