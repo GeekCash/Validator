@@ -54,7 +54,7 @@ echo "
 Description=Geek Validator
 
 [Service]
-ExecStart=/usr/bin/geek ${NODE_KEY}${RPC_CORS}${NODE_NAME}--validator --chain testnet --pruning=archive --base-path ${HOME}/.geek
+ExecStart=/usr/bin/geek ${NODE_KEY}${RPC_CORS}${NODE_NAME}--validator --chain dev --pruning=archive --base-path ${HOME}/.geek
 Restart=always
 RestartSec=120
 
